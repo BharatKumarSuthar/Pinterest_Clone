@@ -24,6 +24,9 @@ export 'package:pinterest_clone/core/theme/app_theme.dart';
 // ----------------- Icons Imports -----------------
 export 'package:pinterest_clone/core/assets/app_icons.dart';
 
+//------------------ Colors Imports-----------------
+export 'package:pinterest_clone/core/constants/app_colors.dart';
+
 // ----------------- Images Imports -----------------
 export 'package:pinterest_clone/core/assets/app_images.dart';
 
