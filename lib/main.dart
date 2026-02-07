@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:pinterest_clone/app.dart';
-import 'package:pinterest_clone/core/utils/app_logger.dart';
+import 'main_index.dart';
 
 void main() {
   AppLogger.info('App Started');

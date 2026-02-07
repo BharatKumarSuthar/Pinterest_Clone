@@ -26,3 +26,9 @@ export 'package:pinterest_clone/core/assets/app_icons.dart';
 
 // ----------------- Images Imports -----------------
 export 'package:pinterest_clone/core/assets/app_images.dart';
+
+//----------------- Screens Imports--------------------
+export 'package:pinterest_clone/features/splash/presentation/splash_screen.dart';
+
+//---------------- Widgets Imports --------------------------
+export 'package:pinterest_clone/core/widgets/app_icon.dart';

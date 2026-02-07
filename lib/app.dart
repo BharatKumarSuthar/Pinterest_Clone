@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'main_index.dart';
 
 class App extends StatelessWidget {
@@ -12,6 +10,8 @@ class App extends StatelessWidget {
 
     return MaterialApp.router(
       title: 'Pinterest',
+      routerConfig: AppRouter.router,
+      theme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
     );
   }
