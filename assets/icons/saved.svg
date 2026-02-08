@@ -1,0 +1,17 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Head -->
+  <path 
+    d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" 
+    stroke="#FFFFFF" 
+    stroke-width="1.0" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"/>
+  
+  <!-- Body with more visible gap -->
+  <path 
+    d="M12 12.5C8.13401 12.5 5 15.134 5 20H19C19 15.134 15.866 12.5 12 12.5Z" 
+    stroke="#FFFFFF" 
+    stroke-width="1.0" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"/>
+</svg>

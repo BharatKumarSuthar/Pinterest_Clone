@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:pinterest_clone/main_index.dart';
 
 class SplashScreen extends StatefulWidget {

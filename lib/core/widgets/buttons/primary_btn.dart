@@ -4,10 +4,12 @@ class PrimaryBtn extends StatelessWidget {
   final String btnTxt;
   final Color bgColor;
   final VoidCallback callback;
+  final EdgeInsets padding;
   const PrimaryBtn({
     required this.btnTxt,
-    this.bgColor = AppColors.red,
+    this.bgColor = AppColors.pinterestRed,
     required this.callback,
+    this.padding = const EdgeInsets.all(12),
     super.key,
   });
 
@@ -16,8 +18,8 @@ class PrimaryBtn extends StatelessWidget {
     return ElevatedButton(
       onPressed: callback,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.red,
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+        backgroundColor: AppColors.pinterestRed,
+        padding: padding,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),
         ),

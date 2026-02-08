@@ -43,6 +43,7 @@ dependencies:
   clerk_flutter: ^0.0.14-beta
   logger: ^2.6.2
   flutter_svg: ^2.2.3
+  custom_refresh_indicator: ^4.0.1
 
 dev_dependencies:
   flutter_test:
