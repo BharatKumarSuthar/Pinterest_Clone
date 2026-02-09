@@ -80,4 +80,9 @@ class AppStrings {
   static const String gmail = "Gmail";
   static const String twitter = "Twitter";
   static const String more = "More";
+
+  //------------------------ OnBoarding -------------------
+  static const String male = "Male";
+  static const String female = "Female";
+  static const String specifyAnother = "Specify another";
 }

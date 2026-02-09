@@ -12,7 +12,6 @@ class BirthDatePage extends ConsumerWidget {
   const BirthDatePage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentIndex = ref.watch(indicatorProvider);
     var birthDate = ref.watch(
       onboardingProvider.select((state) => state.birthDate),
     );

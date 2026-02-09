@@ -13,30 +13,36 @@ class CountryPage extends ConsumerWidget {
       onboardingProvider.select((state) => state.country),
     );
     return Scaffold(
-      body: Column(
-        mainAxisSize: .min,
-        spacing: 10.h,
-        children: [
-          Header(
-            heading: "What's your country or region?",
-            para:
-                "This helps us find more relevent content.We won't show it on your profile.",
-          ),
-          const SizedBox(height: 20.0),
-          Row(
-            mainAxisSize: .max,
-            children: [
-              Expanded(
-                child: Text(
-                  country!,
-                  style: TextStyle(color: AppColors.white, fontSize: 16.sp),
-                ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+        child: Column(
+          mainAxisSize: .min,
+          spacing: 10.h,
+          children: [
+            Header(
+              heading: "What's your country or region?",
+              para:
+                  "This helps us find more relevent content.We won't show it on your profile.",
+            ),
+            const SizedBox(height: 40.0),
+            GestureDetector(
+              onTap: () => context.go(AppRouterPath.country),
+              child: Row(
+                mainAxisSize: .max,
+                children: [
+                  Expanded(
+                    child: Text(
+                      country!,
+                      style: TextStyle(color: AppColors.white, fontSize: 16.sp),
+                    ),
+                  ),
+                  SizedBox(width: 10.w),
+                  Icon(Icons.arrow_forward_ios, color: AppColors.white),
+                ],
               ),
-              SizedBox(width: 10.w),
-              Icon(Icons.arrow_forward_ios, color: AppColors.white),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),

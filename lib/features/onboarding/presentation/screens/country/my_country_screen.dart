@@ -14,6 +14,7 @@ class MyCountryScreen extends ConsumerWidget {
             return const SizedBox(height: 20.0);
           } else {
             return GestureDetector(
+              behavior: .translucent,
               onTap: () {
                 ref
                     .read(onboardingProvider.notifier)
