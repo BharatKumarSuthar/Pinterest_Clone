@@ -18,7 +18,7 @@ class PrimaryBtn extends StatelessWidget {
     return ElevatedButton(
       onPressed: callback,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.pinterestRed,
+        backgroundColor: bgColor,
         padding: padding,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),

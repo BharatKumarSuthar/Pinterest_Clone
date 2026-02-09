@@ -3,5 +3,5 @@ import 'main_index.dart';
 
 void main() {
   AppLogger.info('App Started');
-  runApp(const App());
+  runApp(const ProviderScope(child: App()));
 }
