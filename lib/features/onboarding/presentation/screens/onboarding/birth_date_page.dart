@@ -13,7 +13,7 @@ class BirthDatePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentIndex = ref.watch(indicatorProvider);
-    final birthDate = ref.watch(
+    var birthDate = ref.watch(
       onboardingProvider.select((state) => state.birthDate),
     );
     return Scaffold(
@@ -38,26 +38,14 @@ class BirthDatePage extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
         child: PrimaryBtn(
           btnTxt: AppStrings.next,
-          bgColor: AppColors.charcolBrown,
-          callback: () {},
+          bgColor: AppColors.pinterestRed,
+          callback: () {
+            ref.read(indicatorProvider.notifier).currentIndex();
+          },
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return Dialog(
-                backgroundColor: Colors.white,
-                child: CustomDatePicker(onDateChanged: (value) {}),
-              );
-            },
-          );
-        },
-        backgroundColor: Colors.white,
       ),
     );
   }
@@ -69,7 +57,7 @@ class BirthDatePage extends ConsumerWidget {
   ) {
     return GestureDetector(
       onTap: () {
-        String selectedDate = "";
+        String selectedDate = birthDate;
         showDatePickerDialog(
           context: context,
           child: CustomDatePicker(

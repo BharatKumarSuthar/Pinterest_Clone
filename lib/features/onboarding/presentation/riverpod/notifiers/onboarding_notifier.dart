@@ -3,7 +3,12 @@ import 'package:pinterest_clone/features/onboarding/domain/entities/onboarding_e
 
 class OnboardingNotifier extends StateNotifier<OnboardingEntity> {
   OnboardingNotifier()
-    : super(const OnboardingEntity(country: "India", birthDate: "Feb 7, 2026"));
+    : super(
+        OnboardingEntity(
+          country: "India",
+          birthDate: "Feb 7, ${DateTime.now().year}",
+        ),
+      );
 
   void setBirthDate(String date) {
     state = state.copyWith(birthDate: date);

@@ -30,8 +30,10 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
     "Dec",
   ];
 
-  List<int> get years =>
-      List.generate(100, (index) => 1950 + index); // 1950 - 2049
+  List<int> get years => List.generate(
+    DateTime.now().year - 1949,
+    (index) => 1950 + index,
+  ); // 1950 - 2049
 
   List<int> get days {
     int totalDays = DateUtils.getDaysInMonth(selectedYear, selectedMonth);
