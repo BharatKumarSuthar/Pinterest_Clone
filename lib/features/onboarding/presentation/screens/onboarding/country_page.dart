@@ -14,7 +14,7 @@ class CountryPage extends ConsumerWidget {
     );
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+        padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
         child: Column(
           mainAxisSize: .min,
           spacing: 10.h,
@@ -24,28 +24,38 @@ class CountryPage extends ConsumerWidget {
               para:
                   "This helps us find more relevent content.We won't show it on your profile.",
             ),
-            const SizedBox(height: 40.0),
+            const SizedBox(height: 30.0),
             GestureDetector(
-              onTap: () => context.go(AppRouterPath.country),
-              child: Row(
-                mainAxisSize: .max,
-                children: [
-                  Expanded(
-                    child: Text(
-                      country!,
-                      style: TextStyle(color: AppColors.white, fontSize: 16.sp),
+              onTap: () => context.push(AppRouterPath.country),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.h),
+                child: Row(
+                  mainAxisSize: .max,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        country!,
+                        style: TextStyle(
+                          color: AppColors.white,
+                          fontSize: 16.sp,
+                        ),
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 10.w),
-                  Icon(Icons.arrow_forward_ios, color: AppColors.white),
-                ],
+                    SizedBox(width: 10.w),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.white,
+                      size: 20.r,
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
         child: PrimaryBtn(
           btnTxt: AppStrings.next,
           callback: () {

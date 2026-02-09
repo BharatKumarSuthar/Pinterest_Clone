@@ -37,7 +37,7 @@ class BirthDatePage extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
         child: PrimaryBtn(
           btnTxt: AppStrings.next,
           bgColor: AppColors.pinterestRed,
