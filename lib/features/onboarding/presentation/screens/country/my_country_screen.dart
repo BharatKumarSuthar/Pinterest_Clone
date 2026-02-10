@@ -26,11 +26,7 @@ class MyCountryScreen extends ConsumerWidget {
                 child: Text(
                   maxLines: 1,
                   _countries[index],
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 16.sp,
-                    fontWeight: .w500,
-                  ),
+                  style: TextStyle(color: AppColors.white, fontSize: 16.sp),
                 ),
               ),
             );

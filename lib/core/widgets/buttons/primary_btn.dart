@@ -5,11 +5,13 @@ class PrimaryBtn extends StatelessWidget {
   final Color bgColor;
   final VoidCallback callback;
   final EdgeInsets padding;
+  final Color txtColor;
   const PrimaryBtn({
     required this.btnTxt,
     this.bgColor = AppColors.pinterestRed,
     required this.callback,
     this.padding = const EdgeInsets.all(12),
+    this.txtColor = AppColors.white,
     super.key,
   });
 
@@ -18,6 +20,7 @@ class PrimaryBtn extends StatelessWidget {
     return ElevatedButton(
       onPressed: callback,
       style: ElevatedButton.styleFrom(
+        splashFactory: NoSplash.splashFactory,
         backgroundColor: bgColor,
         padding: padding,
         shape: RoundedRectangleBorder(
@@ -26,7 +29,7 @@ class PrimaryBtn extends StatelessWidget {
       ),
       child: Text(
         btnTxt,
-        style: TextStyle(color: AppColors.white, fontSize: 18.sp),
+        style: TextStyle(color: txtColor, fontSize: 18.sp),
       ),
     );
   }

@@ -33,7 +33,7 @@ class GenderPage extends ConsumerWidget {
                     ref
                         .read(onboardingProvider.notifier)
                         .setGender(genders[index]);
-                    ref.read(indicatorProvider.notifier).currentIndex();
+                    ref.read(indicatorProvider.notifier).nextStep();
                   },
                 ),
               );

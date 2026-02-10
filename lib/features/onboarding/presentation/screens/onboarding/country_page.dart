@@ -59,7 +59,7 @@ class CountryPage extends ConsumerWidget {
         child: PrimaryBtn(
           btnTxt: AppStrings.next,
           callback: () {
-            ref.read(indicatorProvider.notifier).currentIndex();
+            ref.read(indicatorProvider.notifier).nextStep();
           },
         ),
       ),

@@ -42,7 +42,7 @@ class BirthDatePage extends ConsumerWidget {
           btnTxt: AppStrings.next,
           bgColor: AppColors.pinterestRed,
           callback: () {
-            ref.read(indicatorProvider.notifier).currentIndex();
+            ref.read(indicatorProvider.notifier).nextStep();
           },
         ),
       ),

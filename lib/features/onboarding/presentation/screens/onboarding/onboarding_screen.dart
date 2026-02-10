@@ -2,7 +2,7 @@ import 'package:pinterest_clone/features/onboarding/presentation/riverpod/provid
 import 'package:pinterest_clone/features/onboarding/presentation/screens/onboarding/birth_date_page.dart';
 import 'package:pinterest_clone/features/onboarding/presentation/screens/onboarding/country_page.dart';
 import 'package:pinterest_clone/features/onboarding/presentation/screens/onboarding/gender_page.dart';
-import 'package:pinterest_clone/features/onboarding/presentation/screens/onboarding/mood_page.dart';
+import 'package:pinterest_clone/features/onboarding/presentation/screens/onboarding/mood_preferences_page.dart';
 import 'package:pinterest_clone/main_index.dart';
 
 class OnboardingScreen extends ConsumerWidget {
@@ -68,6 +68,6 @@ class OnboardingScreen extends ConsumerWidget {
     BirthDatePage(),
     GenderPage(),
     CountryPage(),
-    MoodPage(),
+    MoodPreferencesPage(),
   ];
 }

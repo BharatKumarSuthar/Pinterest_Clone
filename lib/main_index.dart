@@ -35,4 +35,4 @@ export 'package:pinterest_clone/core/assets/app_images.dart';
 export 'package:pinterest_clone/features/splash/presentation/splash_screen.dart';
 
 //---------------- Widgets Imports --------------------------
-export 'package:pinterest_clone/core/widgets/app_icon.dart';
+export 'package:pinterest_clone/core/widgets/app_icon/app_icon.dart';
