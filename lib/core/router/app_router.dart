@@ -1,5 +1,4 @@
 import 'package:pinterest_clone/features/home/presentation/screens/home_screen.dart';
-import 'package:pinterest_clone/features/home/presentation/screens/pins_feed_screen.dart';
 import 'package:pinterest_clone/features/onboarding/presentation/screens/country/my_country_screen.dart';
 import 'package:pinterest_clone/features/onboarding/presentation/screens/onboarding/onboarding_screen.dart';
 import 'package:pinterest_clone/main_index.dart';
