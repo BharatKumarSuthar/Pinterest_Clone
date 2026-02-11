@@ -25,13 +25,13 @@ class _PinterestRefreshIndicatorState extends State<PinterestRefreshIndicator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(backgroundColor: Colors.amber),
       body: SafeArea(
         child: CustomRefreshIndicator(
           offsetToArmed: _triggerDistance,
           // The actual refresh logic
-          onRefresh: () async => widget.onRefresh,
+          onRefresh: () async {
+            await widget.onRefresh();
+          },
           builder: (context, child, controller) {
             return AnimatedBuilder(
               animation: controller,
@@ -40,6 +40,7 @@ class _PinterestRefreshIndicatorState extends State<PinterestRefreshIndicator> {
                 final double pullDistance = controller.isLoading
                     ? (controller.value * _triggerDistance)
                     : (_scrollOffset < 0 ? _scrollOffset.abs() : 0.0);
+                // 1. Calculate the exact distance the grid is pushed down
 
                 // 2. Entrance & Rotation math
                 final double rotationPercent = (pullDistance / _triggerDistance)
@@ -79,7 +80,7 @@ class _PinterestRefreshIndicatorState extends State<PinterestRefreshIndicator> {
                         // - 46 (the actual height of our red circle)
                         // - 5 (your requested gap)
                         // Total = pullDistance - 51
-                        top: pullDistance - 51,
+                        top: pullDistance - 50,
                         child: Opacity(
                           opacity: effectSmoothness,
                           child: Transform.rotate(
