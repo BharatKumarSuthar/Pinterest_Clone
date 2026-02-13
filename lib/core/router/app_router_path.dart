@@ -3,4 +3,5 @@ class AppRouterPath {
   static const String onBoarding = "/onboarding";
   static const String country = "/country";
   static const String home = "/home";
+  static const String search = "/search";
 }
