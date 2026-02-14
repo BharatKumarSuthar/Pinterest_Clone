@@ -7,7 +7,7 @@ class AppIcon extends StatelessWidget {
   const AppIcon({
     required this.icon,
     this.width = 24.0,
-    this.height = 0,
+    this.height = 24.0,
     super.key,
   });
 

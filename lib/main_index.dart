@@ -14,6 +14,7 @@ export 'package:clerk_flutter/clerk_flutter.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:logger/logger.dart';
 export 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
+export 'package:shared_preferences/shared_preferences.dart';
 
 // ----------------- Router Imports -----------------
 export 'package:pinterest_clone/core/router/app_router.dart';

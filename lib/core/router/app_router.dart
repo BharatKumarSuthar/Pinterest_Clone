@@ -8,7 +8,7 @@ import 'package:pinterest_clone/navigation/main_tabs_screen.dart';
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final GoRouter router = GoRouter(
-    initialLocation: AppRouterPath.tabs,
+    initialLocation: AppRouterPath.splash,
     navigatorKey: _rootNavigatorKey,
     routes: [
       GoRoute(

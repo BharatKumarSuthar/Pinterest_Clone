@@ -1,4 +1,5 @@
 import 'package:pinterest_clone/core/constants/app_strings.dart';
+import 'package:pinterest_clone/core/services/shared_pref_service.dart';
 import 'package:pinterest_clone/core/widgets/buttons/primary_btn.dart';
 import 'package:pinterest_clone/core/widgets/keep_alive_wrapper.dart';
 import 'package:pinterest_clone/features/onboarding/domain/entities/mood_preference_entity.dart';
@@ -10,10 +11,16 @@ import 'package:pinterest_clone/features/onboarding/presentation/widgets/header.
 import 'package:pinterest_clone/features/onboarding/presentation/widgets/mood_preference_card.dart';
 import 'package:pinterest_clone/main_index.dart';
 
-class MoodPreferencesPage extends ConsumerWidget {
+class MoodPreferencesPage extends ConsumerStatefulWidget {
   const MoodPreferencesPage({super.key});
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<MoodPreferencesPage> createState() =>
+      _MoodPreferencesPageState();
+}
+
+class _MoodPreferencesPageState extends ConsumerState<MoodPreferencesPage> {
+  @override
+  Widget build(BuildContext context) {
     final moodPrefList = ref.watch(moodListProvider);
     final selectedImagesList = ref.watch(imageSelectionProvider);
     return Scaffold(
@@ -54,10 +61,12 @@ class MoodPreferencesPage extends ConsumerWidget {
           txtColor: _shouldAllowNext(selectedImagesList.length)
               ? AppColors.white
               : AppColors.grayDim,
-          callback: () {
+          callback: () async {
             if (_shouldAllowNext(selectedImagesList.length)) {
               _setPreferences(ref, selectedImagesList, moodPrefList);
-              context.push(AppRouterPath.tabs);
+              await SharedPrefService.setBool(AppStrings.isOnboarded, true);
+              if (!mounted) return;
+              context.go(AppRouterPath.tabs);
             }
           },
         ),

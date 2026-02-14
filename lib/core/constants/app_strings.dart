@@ -85,4 +85,8 @@ class AppStrings {
   static const String male = "Male";
   static const String female = "Female";
   static const String specifyAnother = "Specify another";
+
+  //------------------------ Shared Pref Keys ----------------
+  static const String isLoggedIn = "is_logged_in";
+  static const String isOnboarded = "is_onboarded";
 }

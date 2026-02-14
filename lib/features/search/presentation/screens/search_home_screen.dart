@@ -69,7 +69,10 @@ class _SearchHomeScreenState extends ConsumerState<SearchHomeScreen>
             controller: _scrollController,
             physics: const BouncingScrollPhysics(),
             slivers: [
-              SliverAppBar(toolbarHeight: (20 * 2) + 50),
+              SliverAppBar(
+                toolbarHeight: (20 * 2) + 50,
+                automaticallyImplyLeading: false,
+              ),
               SliverToBoxAdapter(
                 child: CustomCarousel(
                   items: List.generate(5, (index) {
