@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:pinterest_clone/core/navigation/app_tab.dart';
 import 'package:pinterest_clone/core/navigation/stack_notifier.dart';
+import 'package:pinterest_clone/features/home/presentation/screens/home_screen.dart';
 import 'package:pinterest_clone/features/search/presentation/screens/search_home_screen.dart';
 import 'package:pinterest_clone/main_index.dart';
 
@@ -12,7 +13,7 @@ final tabStackProvider =
     >((ref, tab) {
       switch (tab) {
         case AppTab.home:
-          return StackNotifier(const Text(""));
+          return StackNotifier(const HomeScreen());
         case AppTab.search:
           return StackNotifier(const SearchHomeScreen());
         case AppTab.create:

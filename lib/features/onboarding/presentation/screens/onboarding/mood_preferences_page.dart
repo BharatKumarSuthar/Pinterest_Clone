@@ -57,6 +57,7 @@ class MoodPreferencesPage extends ConsumerWidget {
           callback: () {
             if (_shouldAllowNext(selectedImagesList.length)) {
               _setPreferences(ref, selectedImagesList, moodPrefList);
+              context.push(AppRouterPath.tabs);
             }
           },
         ),
