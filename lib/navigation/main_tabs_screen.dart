@@ -2,6 +2,8 @@ import 'package:flutter/services.dart';
 import 'package:pinterest_clone/core/navigation/app_tab.dart';
 import 'package:pinterest_clone/core/navigation/app_tab_extension.dart';
 import 'package:pinterest_clone/core/navigation/tab_stack_provider.dart';
+import 'package:pinterest_clone/core/widgets/app_modal/app_modal.dart';
+import 'package:pinterest_clone/features/create/presentation/widgets/create_bottom_modal.dart';
 import 'package:pinterest_clone/features/home/presentation/screens/home_screen.dart';
 import 'package:pinterest_clone/features/search/presentation/screens/search_flow_screen.dart';
 import 'package:pinterest_clone/main_index.dart';
@@ -56,6 +58,10 @@ class MainTabsScreen extends ConsumerWidget {
               currentIndex: currentTab,
               onTap: (index) {
                 if (index == 2) {
+                  AppModal.showAppModal(
+                    context: context,
+                    child: CreateBottomModal(),
+                  );
                 } else if (index != currentTab) {
                   ref.read(tabProvider.notifier).setTab(index);
                 }
@@ -105,9 +111,30 @@ class MainTabsScreen extends ConsumerWidget {
   final List<Widget> screens = const [
     HomeScreen(),
     SearchFlowScreen(),
-    HomeScreen(),
-    SearchFlowScreen(),
-    HomeScreen(),
-    SearchFlowScreen(),
+    SizedBox(),
+    SizedBox(
+      child: Center(
+        child: Text(
+          "Inbox",
+          style: TextStyle(
+            color: AppColors.white,
+            fontSize: 40.0,
+            fontWeight: .w700,
+          ),
+        ),
+      ),
+    ),
+    SizedBox(
+      child: Center(
+        child: Text(
+          "Saved",
+          style: TextStyle(
+            color: AppColors.white,
+            fontSize: 40.0,
+            fontWeight: .w700,
+          ),
+        ),
+      ),
+    ),
   ];
 }
