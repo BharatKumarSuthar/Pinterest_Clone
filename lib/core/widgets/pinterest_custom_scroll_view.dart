@@ -5,7 +5,7 @@ import 'package:pinterest_clone/features/home/presentation/widgets/image_card.da
 import 'package:pinterest_clone/main_index.dart';
 
 class PinterestCustomScrollView extends ConsumerStatefulWidget {
-  final List<Widget>? slivers;
+  final List<Widget> slivers;
   final List<PhotoEntity> photos;
   final ScrollPhysics physics;
   final void Function(PhotoEntity)? onImageTap;
@@ -13,7 +13,7 @@ class PinterestCustomScrollView extends ConsumerStatefulWidget {
   const PinterestCustomScrollView({
     this.physics = const BouncingScrollPhysics(),
     required this.photos,
-    this.slivers,
+    this.slivers = const [],
     this.onImageTap,
     super.key,
   });
@@ -53,47 +53,44 @@ class _PinterestGridViewState extends ConsumerState<PinterestCustomScrollView> {
   @override
   Widget build(BuildContext context) {
     final photos = ref.watch(photoNotifierProvider);
-    final notifier = ref.read(photoNotifierProvider.notifier);
+    //final notifier = ref.read(photoNotifierProvider.notifier);
     return KeepAliveWrapper(
       child: CustomScrollView(
         controller: _scrollController,
         physics: widget.physics,
         slivers: [
-          if (widget.slivers != null) ...widget.slivers!,
+          if (widget.slivers.isNotEmpty) ...widget.slivers,
           SliverPadding(
             padding: .symmetric(horizontal: 5),
             sliver: SliverMasonryGrid.count(
               crossAxisCount: 2,
               mainAxisSpacing: 8,
               crossAxisSpacing: 5,
-              childCount: photos.length + (notifier.isLoadingMore ? 1 : 0),
+              childCount: photos.photos.length,
               itemBuilder: (context, index) {
-                if (index < photos.length) {
-                  final photo = photos[index];
-                  return GestureDetector(
-                    onTap: () {
-                      if (widget.onImageTap != null) {
-                        widget.onImageTap!(photo);
-                      }
-                    },
-                    child: ImageCard(
-                      imageUrl: photo.src.medium,
-                      imageWidth: photo.width,
-                      imageHeight: photo.height,
-                    ),
-                  );
-                } else {
-                  // Bottom loader
-                  return const Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Center(
-                      child: CircularProgressIndicator(color: Colors.white),
-                    ),
-                  );
-                }
+                final photo = photos.photos[index];
+                return GestureDetector(
+                  onTap: () {
+                    if (widget.onImageTap != null) {
+                      widget.onImageTap!(photo);
+                    }
+                  },
+                  child: ImageCard(
+                    imageUrl: photo.src.medium,
+                    imageWidth: photo.width,
+                    imageHeight: photo.height,
+                  ),
+                );
               },
             ),
           ),
+          if (photos.isLoadingMore)
+            SliverPadding(
+              padding: .symmetric(horizontal: 20, vertical: 40),
+              sliver: SliverToBoxAdapter(
+                child: Center(child: CircularProgressIndicator()),
+              ),
+            ),
         ],
       ),
     );

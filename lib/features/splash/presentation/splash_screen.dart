@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
         final isOnboarded = SharedPrefService.getBool(AppStrings.isOnboarded);
         if (true) {
           if (isOnboarded != null && isOnboarded) {
-            context.go(AppRouterPath.home);
+            context.go(AppRouterPath.tabs);
           } else {
             context.go(AppRouterPath.onBoarding);
           }

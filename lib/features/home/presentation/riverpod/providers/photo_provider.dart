@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/legacy.dart';
 import 'package:pinterest_clone/features/home/data/data_source/photo_remote_data_source.dart';
 import 'package:pinterest_clone/features/home/data/data_source/photo_remote_data_source_impl.dart';
 import 'package:pinterest_clone/features/home/data/repositories/photo_repository_impl.dart';
-import 'package:pinterest_clone/features/home/domain/entities/photo_entity.dart';
 import 'package:pinterest_clone/features/home/domain/repositories/photo_repository.dart';
 import 'package:pinterest_clone/features/home/domain/use_cases/get_photos.dart';
 import 'package:pinterest_clone/features/home/presentation/riverpod/notifiers/photo_notifier.dart';
@@ -17,9 +16,10 @@ final photoRepositoryProvider = Provider<PhotoRepository>((ref) {
   return PhotoRepositoryImpl(remoteDataSource);
 });
 
-final photoNotifierProvider =
-    StateNotifierProvider<PhotoNotifier, List<PhotoEntity>>((ref) {
-      final repository = ref.watch(photoRepositoryProvider); // see below
-      final useCase = GetPhotos(repository);
-      return PhotoNotifier(useCase);
-    });
+final photoNotifierProvider = StateNotifierProvider<PhotoNotifier, PhotoState>((
+  ref,
+) {
+  final repository = ref.read(photoRepositoryProvider); // see below
+  final useCase = GetPhotos(repository);
+  return PhotoNotifier(useCase);
+});

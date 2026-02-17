@@ -30,7 +30,7 @@ class ImageDetailScreen extends ConsumerWidget {
               ),
             ],
             physics: AlwaysScrollableScrollPhysics(),
-            photos: photos,
+            photos: photos.photos,
           ),
           Positioned(
             left: 10.w,

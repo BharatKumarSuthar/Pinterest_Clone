@@ -27,7 +27,8 @@ class ImageCard extends StatelessWidget {
         child: CachedNetworkImage(
           imageUrl: imageUrl,
           fit: BoxFit.cover,
-          placeholder: (context, url) => ShimmerAnimation(child: Container()),
+          placeholder: (context, url) =>
+              ShimmerAnimation(child: Container(color: AppColors.charcolOlive)),
           errorWidget: (context, url, error) => Container(
             color: Colors.grey.shade300,
             child: Container(

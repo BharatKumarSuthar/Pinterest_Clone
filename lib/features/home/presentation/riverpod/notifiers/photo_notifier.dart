@@ -2,63 +2,94 @@ import 'package:flutter_riverpod/legacy.dart';
 import 'package:pinterest_clone/features/home/domain/entities/photo_entity.dart';
 import 'package:pinterest_clone/features/home/domain/use_cases/get_photos.dart';
 
-class PhotoNotifier extends StateNotifier<List<PhotoEntity>> {
+class PhotoState {
+  final List<PhotoEntity> photos;
+  final bool isLoading;
+  final bool isRefreshing;
+  final bool isLoadingMore;
+
+  const PhotoState({
+    this.photos = const [],
+    this.isLoading = false,
+    this.isRefreshing = false,
+    this.isLoadingMore = false,
+  });
+
+  PhotoState copyWith({
+    List<PhotoEntity>? photos,
+    bool? isLoading,
+    bool? isRefreshing,
+    bool? isLoadingMore,
+  }) {
+    return PhotoState(
+      photos: photos ?? this.photos,
+      isLoading: isLoading ?? this.isLoading,
+      isRefreshing: isRefreshing ?? this.isRefreshing,
+      isLoadingMore: isLoadingMore ?? this.isLoadingMore,
+    );
+  }
+}
+
+class PhotoNotifier extends StateNotifier<PhotoState> {
   final GetPhotos getPhotos;
   int _currentPage = 1;
   bool _isFetching = false;
 
-  // New: Loading states
-  bool isLoading = false;
-  bool isLoadingMore = false;
+  PhotoNotifier(this.getPhotos) : super(const PhotoState());
 
-  PhotoNotifier(this.getPhotos) : super([]);
-
-  /// Initial load or refresh
+  ///Initial load
   Future<void> fetchInitialPhotos() async {
-    _currentPage = 1;
-    isLoading = true;
-    _isFetching = true;
-    try {
-      final photos = await getPhotos(page: _currentPage, perPage: 20);
-      state = photos;
-    } catch (e) {
-      print('Error fetching photos: $e');
-    } finally {
-      isLoading = false;
-      _isFetching = false;
-    }
-  }
-
-  /// Refresh (pull-to-refresh)
-  Future<void> refreshPhotos() async {
     if (_isFetching) return;
     _currentPage = 1;
-    isLoading = true;
     _isFetching = true;
+
+    state = state.copyWith(isLoading: true);
+
     try {
       final photos = await getPhotos(page: _currentPage, perPage: 20);
-      state = photos;
+      state = state.copyWith(photos: photos);
     } catch (e) {
-      print('Error refreshing photos: $e');
+      print('Initial load error: $e');
     } finally {
-      isLoading = false;
+      state = state.copyWith(isLoading: false);
       _isFetching = false;
     }
   }
 
-  /// Load more (infinite scroll)
+  /// Pull-to-refresh
+  Future<void> refreshPhotos() async {
+    if (_isFetching) return;
+    _currentPage++;
+    _isFetching = true;
+
+    state = state.copyWith(isRefreshing: true);
+
+    try {
+      final photos = await getPhotos(page: _currentPage, perPage: 20);
+      state = state.copyWith(photos: photos);
+    } catch (e) {
+      print('Refresh error: $e');
+    } finally {
+      state = state.copyWith(isRefreshing: false);
+      _isFetching = false;
+    }
+  }
+
+  /// Infinite scroll
   Future<void> fetchMorePhotos() async {
     if (_isFetching) return;
     _currentPage++;
-    isLoadingMore = true;
     _isFetching = true;
+
+    state = state.copyWith(isLoadingMore: true);
+
     try {
       final photos = await getPhotos(page: _currentPage, perPage: 20);
-      state = [...state, ...photos];
+      state = state.copyWith(photos: [...state.photos, ...photos]);
     } catch (e) {
-      print('Error fetching more photos: $e');
+      print('Load more error: $e');
     } finally {
-      isLoadingMore = false;
+      state = state.copyWith(isLoadingMore: false);
       _isFetching = false;
     }
   }

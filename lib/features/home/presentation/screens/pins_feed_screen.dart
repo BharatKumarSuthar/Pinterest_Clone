@@ -11,14 +11,19 @@ class PinsFeedScreen extends ConsumerWidget {
   const PinsFeedScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final homeNotifier = ref.watch(homeScreenProvider.notifier);
-    final photos = ref.watch(photoNotifierProvider);
+    debugPrint("BUILD METHOD");
+    final homeNotifier = ref.read(homeScreenProvider.notifier);
+    //final photos = ref.watch(photoNotifierProvider);
     final notifier = ref.read(photoNotifierProvider.notifier);
+    final isLoading = ref.watch(
+      photoNotifierProvider.select((s) => s.isLoading),
+    );
+    final photos = ref.watch(photoNotifierProvider.select((s) => s.photos));
     return Column(
       children: [
         _appBar(context: context),
         Expanded(
-          child: notifier.isLoading && photos.isEmpty
+          child: isLoading && photos.isEmpty
               ? const Center(
                   child: CircularProgressIndicator(color: Colors.white),
                 )
